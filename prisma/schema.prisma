@@ -1,0 +1,55 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Admin {
+  id       Int     @id @default(autoincrement())
+  username String
+  email    String  @unique
+  password String
+}
+
+model Regiao {
+  id         Int     @id @default(autoincrement())
+  slug       String  @unique
+  nome       String
+  Empregos   Emprego[]
+}
+
+model Ramo {
+  id         Int     @id @default(autoincrement())
+  slug       String  @unique
+  nome       String
+  Empregos   Emprego[]
+}
+
+model Emprego {
+  id          Int       @id @default(autoincrement())
+  tipoVaga    TipoVaga
+  experiencia Experiencia
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  localizacao String
+  imagem      String
+  // relation
+  ramoId      Int
+  ramo        Ramo      @relation(fields: [ramoId], references: [id])
+  regiaoId    Int
+  regiao      Regiao    @relation(fields: [regiaoId], references: [id])
+}
+
+enum TipoVaga {
+  clt
+  pj
+  temporario
+}
+
+enum Experiencia {
+  comExperiencia
+  semExperiencia
+}
