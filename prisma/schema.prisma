@@ -8,39 +8,40 @@ generator client {
 }
 
 model Admin {
-  id       Int     @id @default(autoincrement())
+  id       Int    @id @default(autoincrement())
   username String
-  email    String  @unique
+  email    String @unique
   password String
 }
 
 model Regiao {
-  id         Int     @id @default(autoincrement())
-  slug       String  @unique
-  nome       String
-  Empregos   Emprego[]
+  id       Int       @id @default(autoincrement())
+  slug     String    @unique
+  nome     String
+  Empregos Emprego[]
 }
 
 model Ramo {
-  id         Int     @id @default(autoincrement())
-  slug       String  @unique
-  nome       String
-  Empregos   Emprego[]
+  id       Int       @id @default(autoincrement())
+  slug     String    @unique
+  nome     String
+  Empregos Emprego[]
 }
 
 model Emprego {
-  id          Int       @id @default(autoincrement())
+  id          Int         @id @default(autoincrement())
+  titulo      String
   tipoVaga    TipoVaga
   experiencia Experiencia
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
   localizacao String
   imagem      String
   // relation
   ramoId      Int
-  ramo        Ramo      @relation(fields: [ramoId], references: [id])
+  ramo        Ramo        @relation(fields: [ramoId], references: [id])
   regiaoId    Int
-  regiao      Regiao    @relation(fields: [regiaoId], references: [id])
+  regiao      Regiao      @relation(fields: [regiaoId], references: [id])
 }
 
 enum TipoVaga {
