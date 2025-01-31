@@ -1,6 +1,6 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import { Button } from '@/components/ui/button'
+import Link from "next/link"
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
 
 export function Header() {
     return (
@@ -31,11 +31,6 @@ export function Header() {
                 <div className="flex items-center gap-4">
                     <Link href="/login">
                         <Button variant="ghost">Login</Button>
-                    </Link>
-                    <Link href="/registrar">
-                        <Button className="bg-[#4640de] hover:bg-[#4640de]/90">
-                            Registrar
-                        </Button>
                     </Link>
                 </div>
             </div>

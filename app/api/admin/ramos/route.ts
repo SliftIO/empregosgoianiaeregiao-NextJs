@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import {getServerSession} from "next-auth";
-import {authOptions} from "@/app/api/auth/[...nextauth]/route";
+import {authOptions} from "@/app/api/auth/[...nextauth]/auth";
 import {removeAccents} from "@/lib/utils";
 
 export async function GET() {
@@ -14,7 +14,7 @@ export async function GET() {
     } catch (error) {
         console.error("Erro ao buscar ramos:", error);
         return NextResponse.json(
-            { error: "Erro ao buscar ramosaa." },
+            { error: "Erro ao buscar ramos." },
             { status: 500 }
         );
     }
