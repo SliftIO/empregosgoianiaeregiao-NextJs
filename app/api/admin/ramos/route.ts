@@ -14,7 +14,7 @@ export async function GET() {
     } catch (error) {
         console.error("Erro ao buscar ramos:", error);
         return NextResponse.json(
-            { error: "Erro ao buscar ramos." },
+            { error: "Erro ao buscar ramosaa." },
             { status: 500 }
         );
     }
